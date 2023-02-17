@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableNativeFeedback, View} from 'react-native';
 
 interface FabProps {
   onPress: () => void;
@@ -13,13 +13,15 @@ interface FabProps {
 
 const Fab = ({onPress, label, position}: FabProps) => {
   return (
-    <TouchableOpacity
-      onPress={onPress}
-      style={{...styles.fabContainer, ...position}}>
-      <View style={styles.fab}>
-        <Text style={styles.fabText}>{label}</Text>
-      </View>
-    </TouchableOpacity>
+    <View style={{...styles.fabContainer, ...position}}>
+      <TouchableNativeFeedback
+        onPress={onPress}
+        background={TouchableNativeFeedback.Ripple('#28425b', false, 30)}>
+        <View style={styles.fab}>
+          <Text style={styles.fabText}>{label}</Text>
+        </View>
+      </TouchableNativeFeedback>
+    </View>
   );
 };
 
@@ -42,6 +44,14 @@ const styles = StyleSheet.create({
     height: 60,
     borderRadius: 100,
     justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 4.65,
+    elevation: 10,
   },
   fabText: {
     color: 'white',
