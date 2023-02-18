@@ -1,14 +1,6 @@
 import React from 'react';
 import CounterScreen from './src/screens/CounterScreen';
-import HolaMundoScreen from './src/screens/HolaMundoScreen';
 
-const App = (): JSX.Element => {
-  return (
-    <>
-      {/* <HolaMundoScreen /> */}
-      <CounterScreen />
-    </>
-  );
-};
+const App = (): JSX.Element => <CounterScreen />;
 
 export default App;
